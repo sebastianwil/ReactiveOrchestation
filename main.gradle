@@ -19,6 +19,7 @@ subprojects {
     dependencies {
         implementation 'io.projectreactor:reactor-core'
         implementation 'io.projectreactor.addons:reactor-extra'
+        implementation 'io.projectreactor.addons:reactor-extra'
 
         testImplementation 'io.projectreactor:reactor-test'
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -29,6 +30,11 @@ subprojects {
         implementation platform("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
     }
 
+    ext.libs = [
+            mapper: [
+                    "org.modelmapper:modelmapper:${modelMapper}"
+            ]
+    ]
     test.finalizedBy(project.tasks.jacocoTestReport)
 
     jacocoTestReport {

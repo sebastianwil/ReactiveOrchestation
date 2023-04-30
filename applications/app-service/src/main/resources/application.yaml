@@ -14,9 +14,10 @@ spring:
 adapter:
   restconsumer:
     timeout: 5000
-    url: "http://localhost:8080"
+    url: "http://localhost:3000"
 management:
   endpoints:
+    users: "/users"
     web:
       exposure:
         include: "health,prometheus"
