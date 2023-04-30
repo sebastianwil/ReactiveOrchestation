@@ -10,6 +10,7 @@ import lombok.*;
 @Builder(toBuilder = true)
 public class User {
 
+//    @JsonProperty("id")
     private int userId;
     private String firstname;
     private String lastname;

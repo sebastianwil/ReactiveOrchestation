@@ -21,18 +21,18 @@ public class RestConsumer implements UserRepository{
 
 
     public Mono<User> retrieveUsers() {
-
+        ObjectMapper objectMapper = new ObjectMapper();
         return client
             .get()
                 .uri(uriTest1)
             .retrieve()
             .bodyToMono(String.class)
-                .map(json -> {
-                    ObjectMapper mapper = new ObjectMapper();
+                .flatMap(json -> {
                     try {
-                        return mapper.readValue(json, User.class);
+                        User user = objectMapper.readValue(json, User.class);
+                        return Mono.just(user);
                     } catch (JsonProcessingException e) {
-                        throw new RuntimeException(e);
+                        return Mono.error(new RuntimeException("Error parsing response: " + e.getMessage()));
                     }
                 });
     }
