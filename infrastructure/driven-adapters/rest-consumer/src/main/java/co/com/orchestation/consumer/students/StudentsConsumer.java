@@ -1,4 +1,4 @@
-package co.com.orchestation.consumer.user;
+package co.com.orchestation.consumer.students;
 
 import co.com.orchestation.consumer.user.dto.request.UserDataDTO;
 import co.com.orchestation.consumer.user.dto.response.UserDTO;
@@ -18,40 +18,15 @@ import reactor.core.publisher.Mono;
 
 @Service
 @RequiredArgsConstructor
-public class RestConsumer implements UserRepository, StudentRepository {
+public class StudentsConsumer implements StudentRepository {
 
-    private final String uriTest1 = "/user";
+
 
     private final String uriTest2 = "http://localhost:3001/student";
 
     private final WebClient client;
 
 
-
-    public Mono<User> retrieveUsers() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        return client
-            .get()
-                .uri(uriTest1)
-            .retrieve()
-            .bodyToMono(String.class)
-                .flatMap(json -> {
-                    try {
-                        User user = objectMapper.readValue(json, User.class);
-                        return Mono.just(user);
-                    } catch (JsonProcessingException e) {
-                        return Mono.error(new RuntimeException("Error parsing response: " + e.getMessage()));
-                    }
-                }).onErrorResume(e -> {
-                    if (e instanceof WebClientResponseException.NotFound) {
-                        return Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found"));
-                    } else if (e instanceof WebClientResponseException wcre) {
-                        return Mono.error(new ResponseStatusException(wcre.getStatusCode(), wcre.getResponseBodyAsString()));
-                    } else {
-                        return Mono.error(new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Internal server error"));
-                    }
-                });
-    }
 
     public Mono<Student> retrieveStudents() {
         ObjectMapper objectMapper = new ObjectMapper();
