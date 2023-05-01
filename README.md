@@ -1,4 +1,4 @@
-# Proyecto Base Implementando Clean Architecture
+# Proyecto 
 
 ## Antes de Iniciar
 

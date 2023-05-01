@@ -1,4 +1,4 @@
-package co.com.orchestation.model.user;
+package co.com.orchestation.model.student;
 import lombok.*;
 //import lombok.NoArgsConstructor;
 
@@ -8,13 +8,16 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
+public class Student {
 
-public class User {
-
-    private int userId;
+    private int id;
 
     private String firstname;
 
     private String lastname;
+
+    private String room;
+
+    private Boolean isUser;
 
 }

@@ -1,4 +1,4 @@
-package co.com.orchestation.usecase;
+package co.com.orchestation.usecase.Users;
 
 import co.com.orchestation.model.user.User;
 import co.com.orchestation.model.user.gateways.UserRepository;

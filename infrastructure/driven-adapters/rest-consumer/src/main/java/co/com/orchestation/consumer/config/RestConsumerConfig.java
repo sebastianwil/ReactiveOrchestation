@@ -44,5 +44,8 @@ public class RestConsumerConfig {
                     connection.addHandlerLast(new WriteTimeoutHandler(timeout, MILLISECONDS));
                 }));
     }
+    public void restartWebClient(WebClient.Builder builder){
+        getWebClient(builder);
+    }
 
 }
