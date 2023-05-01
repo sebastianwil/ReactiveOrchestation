@@ -1,6 +1,6 @@
-package co.com.orchestation.consumer.user.dto.factory;
+package co.com.orchestation.consumer.users.dto.factory;
 
-import co.com.orchestation.consumer.user.dto.response.UserDataDTO;
+import co.com.orchestation.consumer.users.dto.response.UserDataDTO;
 import co.com.orchestation.model.user.User;
 import lombok.experimental.UtilityClass;
 import reactor.core.publisher.Mono;

@@ -1,19 +1,12 @@
 package co.com.orchestation.consumer.students;
 
-import co.com.orchestation.consumer.user.dto.request.UserDataDTO;
-import co.com.orchestation.consumer.user.dto.response.UserDTO;
 import co.com.orchestation.model.student.Student;
 import co.com.orchestation.model.student.gateways.StudentRepository;
-import co.com.orchestation.model.user.User;
-import co.com.orchestation.model.user.gateways.UserRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.reactive.function.client.WebClientResponseException;
-import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Mono;
 
 @Service

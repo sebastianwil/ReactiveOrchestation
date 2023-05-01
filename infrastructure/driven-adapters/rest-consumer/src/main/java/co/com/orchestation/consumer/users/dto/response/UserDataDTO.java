@@ -1,4 +1,4 @@
-package co.com.orchestation.consumer.user.dto.response;
+package co.com.orchestation.consumer.users.dto.response;
 
 import lombok.*;
 

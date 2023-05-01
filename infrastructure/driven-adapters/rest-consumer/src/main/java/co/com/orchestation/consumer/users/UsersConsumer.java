@@ -1,7 +1,5 @@
-package co.com.orchestation.consumer.user;
+package co.com.orchestation.consumer.users;
 
-import co.com.orchestation.consumer.user.dto.request.UserDataDTO;
-import co.com.orchestation.consumer.user.dto.response.UserDTO;
 import co.com.orchestation.model.student.Student;
 import co.com.orchestation.model.student.gateways.StudentRepository;
 import co.com.orchestation.model.user.User;
@@ -18,11 +16,9 @@ import reactor.core.publisher.Mono;
 
 @Service
 @RequiredArgsConstructor
-public class RestConsumer implements UserRepository, StudentRepository {
+public class UsersConsumer implements UserRepository {
 
     private final String uriTest1 = "/user";
-
-    private final String uriTest2 = "http://localhost:3001/student";
 
     private final WebClient client;
 
@@ -51,37 +47,5 @@ public class RestConsumer implements UserRepository, StudentRepository {
                         return Mono.error(new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Internal server error"));
                     }
                 });
-    }
-
-    public Mono<Student> retrieveStudents() {
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        return client
-                .get()
-                .uri(uriTest2)
-                .retrieve()
-                .bodyToMono(String.class)
-                .flatMap(json -> {
-                    try {
-                        Student student = objectMapper.readValue(json, Student.class);
-                        return Mono.just(student);
-                    } catch (JsonProcessingException e) {
-                        return Mono.error(new RuntimeException("Error parsing response: " + e.getMessage()));
-                    }
-                });
-    }
-
-    public Mono<UserDTO> testPost() {
-
-        UserDataDTO request = UserDataDTO.builder()
-            .val1("exampleval1")
-            .val2("exampleval2")
-            .build();
-
-        return client
-            .post()
-            .body(Mono.just(request), UserDataDTO.class)
-            .retrieve()
-            .bodyToMono(UserDTO.class);
     }
 }

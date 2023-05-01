@@ -24,8 +24,4 @@ private final StudentsUseCase studentsUseCase;
     public Mono<ServerResponse> getStudents(ServerRequest serverRequest) {
         return Mono.just(studentsUseCase.execute()).flatMap(students -> ServerResponse.ok().body(students, students.getClass()));
     }
-
-    public Mono<ServerResponse> listenPOSTUseCase(ServerRequest serverRequest) {
-        return ServerResponse.ok().bodyValue("");
-    }
 }

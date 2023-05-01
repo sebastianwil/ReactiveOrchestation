@@ -1,4 +1,4 @@
-package co.com.orchestation.consumer.user.dto.request;
+package co.com.orchestation.consumer.users.dto.response;
 
     import lombok.Builder;
     import lombok.AllArgsConstructor;
@@ -11,9 +11,12 @@ package co.com.orchestation.consumer.user.dto.request;
     @NoArgsConstructor
     @AllArgsConstructor
     @Builder(toBuilder = true)
-public class UserDataDTO {
+public class UserDTO {
+            private int userId;
 
-private String val1;
-private String val2;
+            private String firstname;
+
+            private String lastname;
+
 
 }
