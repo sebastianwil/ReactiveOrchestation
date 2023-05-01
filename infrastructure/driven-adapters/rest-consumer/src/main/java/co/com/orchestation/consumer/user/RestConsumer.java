@@ -23,7 +23,7 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class RestConsumer implements UserRepository, StudentRepository {
 
-    private final String uriTest1 = "/usersasdsad";
+    private final String uriTest1 = "/user";
 
     private final String uriTest2 = "http://localhost:3001/student";
 
