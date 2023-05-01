@@ -45,18 +45,4 @@ public class StudentsConsumer implements StudentRepository {
                     }
                 });
     }
-
-    public Mono<UserDTO> testPost() {
-
-        UserDataDTO request = UserDataDTO.builder()
-            .val1("exampleval1")
-            .val2("exampleval2")
-            .build();
-
-        return client
-            .post()
-            .body(Mono.just(request), UserDataDTO.class)
-            .retrieve()
-            .bodyToMono(UserDTO.class);
-    }
 }
