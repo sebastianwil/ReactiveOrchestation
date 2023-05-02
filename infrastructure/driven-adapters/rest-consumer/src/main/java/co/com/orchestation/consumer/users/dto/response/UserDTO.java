@@ -1,5 +1,6 @@
 package co.com.orchestation.consumer.users.dto.response;
 
+    import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
     import lombok.Builder;
     import lombok.AllArgsConstructor;
     import lombok.Getter;
@@ -11,12 +12,12 @@ package co.com.orchestation.consumer.users.dto.response;
     @NoArgsConstructor
     @AllArgsConstructor
     @Builder(toBuilder = true)
+    @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserDTO {
             private int userId;
 
             private String firstname;
 
             private String lastname;
-
 
 }
