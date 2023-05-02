@@ -35,7 +35,13 @@ public class UsersConsumer implements UserRepository {
         return client
             .get()
                 .uri(uriTest1)
-                .exchangeToFlux(clientResponse -> getClientResponse(clientResponse));
+                .exchangeToFlux(clientResponse -> getClientResponse(clientResponse))
+                .onErrorMap(WebClientResponseException.NotFound.class, e ->
+                        new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found", e))
+                .onErrorMap(WebClientResponseException.class, e ->
+                        new ResponseStatusException(e.getStatusCode(), e.getResponseBodyAsString(), e))
+                .onErrorMap(e ->
+                        new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Internal server error", e));
     }
     private Flux<User> getClientResponse(ClientResponse clientResponse){
 
