@@ -1,7 +1,8 @@
 package co.com.orchestation.api;
 
-import co.com.orchestation.usecase.Users.UsersUseCase;
+
 import co.com.orchestation.usecase.students.StudentsUseCase;
+import co.com.orchestation.usecase.users.UsersUseCase;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;

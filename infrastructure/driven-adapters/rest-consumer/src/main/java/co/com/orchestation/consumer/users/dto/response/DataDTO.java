@@ -12,6 +12,6 @@ import java.util.List;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserDataDTO {
-    List<User> users;
+public class DataDTO {
+    UserDataDTO data;
 }

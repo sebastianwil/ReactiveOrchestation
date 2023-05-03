@@ -9,9 +9,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
+public class DataUsers {
 
-public class Users {
-
-    private List<User> users;
+    private Users data;
 
 }
