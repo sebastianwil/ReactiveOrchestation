@@ -1,4 +1,4 @@
-package co.com.orchestation.consumer.commons.config.config;
+package co.com.orchestation.consumer.commons.config;
 
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;

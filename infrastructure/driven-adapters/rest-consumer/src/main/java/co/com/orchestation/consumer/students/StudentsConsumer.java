@@ -1,5 +1,6 @@
 package co.com.orchestation.consumer.students;
 
+import co.com.orchestation.consumer.commons.config.ConsumerProperty;
 import co.com.orchestation.model.student.Student;
 import co.com.orchestation.model.student.gateways.StudentRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -14,8 +15,7 @@ import reactor.core.publisher.Mono;
 public class StudentsConsumer implements StudentRepository {
 
 
-
-    private final String uriTest2 = "http://localhost:3001/student";
+    private final ConsumerProperty property;
 
     private final WebClient client;
 
@@ -23,10 +23,10 @@ public class StudentsConsumer implements StudentRepository {
 
     public Mono<Student> retrieveStudents() {
         ObjectMapper objectMapper = new ObjectMapper();
-
+        System.out.println(property.getHostApi2());
         return client
                 .get()
-                .uri(uriTest2)
+                .uri(property.getHostApi2())
                 .retrieve()
                 .bodyToMono(String.class)
                 .flatMap(json -> {
