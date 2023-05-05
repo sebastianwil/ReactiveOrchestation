@@ -1,8 +1,7 @@
 package co.com.orchestation.consumer.users;
 
 import co.com.orchestation.consumer.commons.config.ConsumerProperty;
-import co.com.orchestation.consumer.users.dto.response.DataDTO;
-import co.com.orchestation.consumer.users.dto.response.UserDataDTO;
+import co.com.orchestation.consumer.commons.dto.Data;
 import co.com.orchestation.consumer.users.factory.UserFactory;
 import co.com.orchestation.model.user.User;
 import co.com.orchestation.model.user.gateways.UserRepository;
@@ -40,7 +39,7 @@ public class UsersConsumer implements UserRepository {
     }
     private Flux<User> getClientResponse(ClientResponse clientResponse){
 
-        return clientResponse.bodyToMono(DataDTO.class)
+        return clientResponse.bodyToMono(Data.class)
                 .flatMapMany(UserFactory::execute);
     }
 }
