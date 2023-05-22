@@ -12,8 +12,8 @@ import lombok.*;
 public class StudentDTO {
     private int userId;
 
-    private String firstname;
+    private String firstName;
 
-    private String lastname;
+    private String lastName;
 
 }

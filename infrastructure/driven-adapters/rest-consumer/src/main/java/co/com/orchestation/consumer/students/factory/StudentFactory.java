@@ -17,8 +17,8 @@ public class StudentFactory {
                 .stream().map( studentDto ->
                         Student.builder()
                                 .id(studentDto.getId())
-                                .lastname(studentDto.getLastname())
-                                .firstname(studentDto.getFirstname())
+                                .lastName(studentDto.getLastName())
+                                .firstName(studentDto.getFirstName())
                                 .room(studentDto.getRoom())
                                 .isUser(studentDto.getIsUser())
                                 .build()

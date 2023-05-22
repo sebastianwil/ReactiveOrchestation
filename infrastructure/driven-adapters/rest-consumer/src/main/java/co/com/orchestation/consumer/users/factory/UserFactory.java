@@ -16,8 +16,8 @@ public class UserFactory {
                 .stream().map( userDto ->
                         User.builder()
                                 .userId(userDto.getUserId())
-                                .lastname(userDto.getLastname())
-                                .firstname(userDto.getFirstname())
+                                .lastName(userDto.getLastName())
+                                .firstName(userDto.getFirstName())
                                 .build()
                 ).collect(Collectors.toList());
 

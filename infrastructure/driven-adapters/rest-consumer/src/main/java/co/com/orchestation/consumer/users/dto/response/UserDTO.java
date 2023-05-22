@@ -16,8 +16,8 @@ package co.com.orchestation.consumer.users.dto.response;
 public class UserDTO {
             private int userId;
 
-            private String firstname;
+            private String firstName;
 
-            private String lastname;
+            private String lastName;
 
 }

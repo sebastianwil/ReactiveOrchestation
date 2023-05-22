@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class PersonDTO {
     private int id;
 
-    private String firstname;
+    private String firstName;
 
     private Boolean isUser;
 
