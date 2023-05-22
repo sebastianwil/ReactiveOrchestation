@@ -25,3 +25,6 @@ management:
     health:
       probes:
         enabled: true
+consumer:
+  hostApi1: "http://localhost:3000/user"
+  hostApi2: "http://localhost:3001/student"

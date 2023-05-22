@@ -13,8 +13,8 @@ public class User {
 
     private int userId;
 
-    private String firstname;
+    private String firstName;
 
-    private String lastname;
+    private String lastName;
 
 }

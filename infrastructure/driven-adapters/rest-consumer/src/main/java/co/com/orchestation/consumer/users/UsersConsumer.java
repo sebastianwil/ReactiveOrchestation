@@ -1,7 +1,7 @@
 package co.com.orchestation.consumer.users;
 
-import co.com.orchestation.consumer.users.dto.response.DataDTO;
-import co.com.orchestation.consumer.users.dto.response.UserDataDTO;
+import co.com.orchestation.consumer.commons.config.ConsumerProperty;
+import co.com.orchestation.consumer.commons.dto.Data;
 import co.com.orchestation.consumer.users.factory.UserFactory;
 import co.com.orchestation.model.user.User;
 import co.com.orchestation.model.user.gateways.UserRepository;
@@ -18,7 +18,7 @@ import reactor.core.publisher.Flux;
 @RequiredArgsConstructor
 public class UsersConsumer implements UserRepository {
 
-    private final String uriTest1 = "/user";
+    private final ConsumerProperty property;
 
     private final WebClient client;
 
@@ -28,7 +28,7 @@ public class UsersConsumer implements UserRepository {
 
         return client
             .get()
-                .uri(uriTest1)
+                .uri(property.getHostApi1())
                 .exchangeToFlux(clientResponse -> getClientResponse(clientResponse))
                 .onErrorMap(WebClientResponseException.NotFound.class, e ->
                         new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found", e))
@@ -39,7 +39,7 @@ public class UsersConsumer implements UserRepository {
     }
     private Flux<User> getClientResponse(ClientResponse clientResponse){
 
-        return clientResponse.bodyToMono(DataDTO.class)
+        return clientResponse.bodyToMono(Data.class)
                 .flatMapMany(UserFactory::execute);
     }
 }
