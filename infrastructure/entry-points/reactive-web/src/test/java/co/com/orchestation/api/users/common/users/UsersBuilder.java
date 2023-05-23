@@ -1,5 +1,6 @@
-package co.com.orchestation.api.users.common;
+package co.com.orchestation.api.users.common.users;
 
+import co.com.orchestation.api.users.common.users.UserBuilder;
 import co.com.orchestation.model.user.User;
 import co.com.orchestation.model.user.Users;
 import lombok.AllArgsConstructor;
