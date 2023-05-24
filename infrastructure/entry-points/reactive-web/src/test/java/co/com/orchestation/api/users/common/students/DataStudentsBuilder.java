@@ -22,7 +22,16 @@ public class DataStudentsBuilder {
     }
 
     public DataStudents build(){
-        data.getStudents().add(Student.builder().id(54321).firstName("SebasTest").lastName("WilchesTest").room("CasaTest").isUser(false).build());
+
+        data.getStudents().add(Student.builder()
+                .id(54321)
+                .firstName("SebasTest")
+                .lastName("WilchesTest")
+                .room("CasaTest")
+                .isUser(false)
+                .build());
+
         return DataStudents.builder().data(data).build();
+
     }
 }
