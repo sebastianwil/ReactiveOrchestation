@@ -22,5 +22,6 @@ public class UserFactory {
                 ).collect(Collectors.toList());
 
         return Mono.just(users).flatMapMany(Flux::fromIterable);
+
     }
 }

@@ -2,10 +2,14 @@ package co.com.orchestation.api.users;
 
 import co.com.orchestation.api.Handler;
 import co.com.orchestation.api.RouterRest;
+import co.com.orchestation.api.users.common.persons.DataPersonsBuilder;
 import co.com.orchestation.api.users.common.users.DataStudentsBuilder;
 import co.com.orchestation.api.users.common.data.UserData;
 import co.com.orchestation.api.users.common.users.DataUsersBuilder;
 import co.com.orchestation.consumer.commons.config.ConsumerProperty;
+import co.com.orchestation.model.persons.DataPersons;
+import co.com.orchestation.model.persons.Persons;
+import co.com.orchestation.usecase.persons.PersonsUseCase;
 import co.com.orchestation.usecase.students.StudentsUseCase;
 import co.com.orchestation.usecase.users.UsersUseCase;
 import org.junit.jupiter.api.Test;
@@ -36,6 +40,8 @@ class RouterRestTest {
 
     @MockBean
     private StudentsUseCase studentsUseCase;
+    @MockBean
+    private PersonsUseCase personsUseCase;
 
     @Test
     void shouldDisplayUsersArrayAfterGetUsers() {
@@ -67,6 +73,32 @@ class RouterRestTest {
                 .jsonPath("$.data.students[0].room").isEqualTo("CasaTest")
                 .jsonPath("$.data.students[0].isUser").isEqualTo(false);
     }
+
+    @Test
+    void shouldDisplayPersonsArrayAfterGetUsers() {
+
+
+
+        Mockito.when(personsUseCase.execute())
+                .thenReturn(Mono.just(new DataPersonsBuilder().build(new DataUsersBuilder().build(), new DataStudentsBuilder().build())));
+
+        statusAssertions(userData.PERSONS_PATH)
+                .isOk()
+                .expectBody()
+                .jsonPath("$.data.students").isArray()
+                .jsonPath("$.data.students[0].lastName").isEqualTo("WilchesTest")
+                .jsonPath("$.data.students[0].firstName").isEqualTo("SebasTest")
+                .jsonPath("$.data.students[0].id").isEqualTo(54321)
+                .jsonPath("$.data.students[0].room").isEqualTo("CasaTest")
+                .jsonPath("$.data.students[0].isUser").isEqualTo(false)
+                .jsonPath("$.data.users").isArray()
+                .jsonPath("$.data.users[0].lastName").isEqualTo("Testing")
+                .jsonPath("$.data.users[0].firstName").isEqualTo("Probando")
+                .jsonPath("$.data.users[0].userId").isEqualTo(12345);
+
+    }
+
+
 
     private <T> StatusAssertions statusAssertions(String path) {
 
